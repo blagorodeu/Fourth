@@ -40,7 +40,34 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun UI_Work(modifier: Modifier = Modifier)
 {
+    val input = remember{mutableStateOf("")}
+    val res_sum = remember{mutableStateOf("")}
+    val res_addend = remember{mutableStateOf("")}
+    val res_iterations = remember{mutableStateOf("")}
 
+    Column (
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier.fillMaxSize()
+    ){
+        Row(
+            modifier = Modifier.padding(8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text("Число x", modifier.padding(8.dp))
+            TextField(
+                value = input.value,
+                onValueChange = { newText -> input.value = newText }
+            )
+        }
+        Button(onClick = { },
+            shape = RectangleShape,     // прямоугольная кнопка
+            modifier = Modifier.padding(8.dp)
+        ){ Text("OK") }
+        Text("Сумма: " + res_sum.value)
+        Text("Последнее слагаемое: " + res_addend.value, modifier.padding(3.dp))
+        Text("Количество итераций: " + res_iterations.value)
+    }
 }
 
 @Preview(showBackground = true)
