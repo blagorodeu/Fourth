@@ -52,6 +52,7 @@ fun UI_Work(modifier: Modifier = Modifier)
         verticalArrangement = Arrangement.Center,
         modifier = Modifier.fillMaxSize()
     ){
+        Text("(1/x)-(1/3*x^3)+(1/5*x^5)-(1/7*x^7)+(1/9*x^9)-...", modifier.padding(8.dp))
         Row(
             modifier = Modifier.padding(8.dp),
             verticalAlignment = Alignment.CenterVertically
