@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -40,7 +41,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun UI_Work(modifier: Modifier = Modifier)
 {
-    val input = remember{mutableStateOf("")}
+    val input_X = remember{mutableStateOf("")}
+    val input_num = remember{mutableStateOf("")}
     val res_sum = remember{mutableStateOf("")}
     val res_addend = remember{mutableStateOf("")}
     val res_iterations = remember{mutableStateOf("")}
@@ -52,12 +54,24 @@ fun UI_Work(modifier: Modifier = Modifier)
     ){
         Row(
             modifier = Modifier.padding(8.dp),
-            verticalAlignment = Alignment.CenterVertically,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Text("Число x", modifier.padding(8.dp))
             TextField(
-                value = input.value,
-                onValueChange = { newText -> input.value = newText }
+                value = input_X.value,
+                onValueChange = { newText -> input_X.value = newText },
+                modifier = Modifier.width(200.dp)
+            )
+        }
+        Row(
+            modifier = Modifier.padding(8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text("Заданное число", modifier.padding(8.dp))
+            TextField(
+                value = input_num.value,
+                onValueChange = { newText -> input_num.value = newText },
+                modifier = Modifier.width(200.dp)
             )
         }
         Button(onClick = { },
