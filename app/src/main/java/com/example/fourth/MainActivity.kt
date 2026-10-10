@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.fourth.ui.theme.FourthTheme
+import kotlin.math.pow
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,7 +76,29 @@ fun UI_Work(modifier: Modifier = Modifier)
                 modifier = Modifier.width(200.dp)
             )
         }
-        Button(onClick = { },
+        Button(onClick = {
+            if ((input_X.value != "") and (input_num.value != ""))
+            {
+                var x: Double = input_X.value.toDouble()
+                var num: Double = input_num.value.toDouble()
+                var iterations = 0.0
+                var j = 1.0
+                var res = 0.0
+                while (1/(j*x.pow(j)) >= num)
+                {
+                    res = res + ((-1.0).pow(iterations)*1/(j*x.pow(j)))
+                    iterations = iterations + 1.0
+                    j = j + 2.0
+                }
+                if (iterations == 0.0)
+                {
+                    res = 1/x
+                }
+                res_sum.value = res.toString()
+                res_addend.value = "1/(" + j.toInt().toString() + " * " + x.toString() + "^" + j.toInt().toString() + ")"
+                res_iterations.value = iterations.toInt().toString()
+            }
+        },
             shape = RectangleShape,     // прямоугольная кнопка
             modifier = Modifier.padding(8.dp)
         ){ Text("OK") }
